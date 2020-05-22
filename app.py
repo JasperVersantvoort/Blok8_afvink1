@@ -1,10 +1,13 @@
 from flask import Flask
+import mysql.connector
 
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
+@app.route('/afvink3')
+def Connect_database():
+    conn = mysql.connector.connect(host='ensembldb.ensembl.org',user ='anonymous',db='homo_sapiens_core_95_38')
+
     return 'Hello World!'
 
 

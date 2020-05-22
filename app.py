@@ -17,9 +17,9 @@ def connect_database():
     cursor = conn.cursor()
     cursor.execute("select description from gene")
     rows = cursor.fetchall()
-    discript = []
+    discript = ''
     for row in rows:
-        discript.append(row)
+        discript +=(row)
     # print(rows)
     cursor.close()
     conn.close()

@@ -16,14 +16,16 @@ def connect_database():
                                    db='homo_sapiens_core_95_38')
     cursor = conn.cursor()
     cursor.execute("select description from gene")
+    #rows = cursor.fetchall()
     rows = cursor.fetchall()
-    discript = ''
+    des =[]
     for row in rows:
-        discript +=(row)
-    # print(rows)
+        if str(row) != "(None,)":
+            des.append(row)
+
     cursor.close()
     conn.close()
-    return discript
+    return des
 
 
 if __name__ == '__main__':

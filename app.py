@@ -4,7 +4,7 @@ import mysql.connector
 app = Flask(__name__)
 
 
-@app.route('/afvink3')
+@app.route('/afvink3', methods=["POST"])
 def webpagina():
     rows= connect_database()
     return render_template("Afvink3.html", database=rows)

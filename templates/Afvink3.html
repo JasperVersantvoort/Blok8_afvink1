@@ -12,12 +12,24 @@
     zoek naar een woord in de zoekbalk om deze te zoeken in de discription van
     de database</p>
 
-<p> discriptions: </p>
+<form method="POST">
+    <p>
+        Voer zoekwoord in:
+        <label>
+            <input type="text" name=zoek>
+            <button type="submit">Zoek</button>
+        </label>
+
+    </p>
+
+<p> Discriptions: </p>
 
 {% for regel in database %}
     <p> {{ regel }} <p>
 
 {% endfor %}
 <p>{{ database }}</p>
+
+</form>
 </body>
 </html>

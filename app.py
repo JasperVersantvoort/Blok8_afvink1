@@ -9,7 +9,7 @@ import mysql.connector
 app = Flask(__name__)
 
 
-@app.route('/afvink3', methods=["POST", "GET"])
+@app.route('/', methods=["POST", "GET"])
 def webpagina():
     """
 
@@ -33,7 +33,7 @@ def connect_database(zoek):
     :param zoek: Het ingegeven zoekwoord
     :return: Een lijst met de juiste discriptions
     """
-    print("zoek woord is: ", zoek)
+    print("zoek woord is:", zoek)
     conn = mysql.connector.connect(host='ensembldb.ensembl.org',
                                    user='anonymous',
                                    db='homo_sapiens_core_95_38')
@@ -43,8 +43,9 @@ def connect_database(zoek):
     des = []
     for row in rows:
         if str(row) != "(None,)":
-            if zoek in str(row) or zoek is None:
+            if zoek.upper() in str(row).upper() or zoek is 'None':
                 des.append(row)
+
 
     cursor.close()
     conn.close()

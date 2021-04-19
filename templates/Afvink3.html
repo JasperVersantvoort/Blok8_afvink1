@@ -30,7 +30,7 @@
             {% else %}
             <p>
             {% for woord in regel %}
-                {% if(woord == zoek) %}
+                {% if(woord.upper() == zoek.upper()) %}
                 <b>{{ woord }}</b>
                 {% else %}
                 {{ woord }}

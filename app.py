@@ -44,16 +44,19 @@ def connect_database(zoek):
     for row in rows:
         if str(row) != "(None,)":
             if zoek.upper() in str(row).upper():
-                pos_start = str(row).upper().index(zoek.upper())
-                pos_end = pos_start + len(zoek)
 
-                woord = str(row)[pos_start:pos_end]
-                split_row = str(row).upper().split(zoek.upper())
                 regel = []
-                for i in range(len(split_row)):
-                    regel.append(split_row[i])
-                    if i != len(split_row)-1:
-                        regel.append(woord)
+                door = True
+                while door:
+                    pos_start = str(row).upper().index(zoek.upper())
+                    pos_end = pos_start + len(zoek)
+                    woord = str(row)[pos_start:pos_end]
+                    regel.append(str(row)[0:pos_start])
+                    regel.append(woord)
+                    row = str(row)[pos_end:]
+                    door = zoek.upper() in str(row).upper()
+
+                regel.append(row)
                 des.append(regel)
 
 

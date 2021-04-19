@@ -43,9 +43,24 @@ def connect_database(zoek):
     des = []
     for row in rows:
         if str(row) != "(None,)":
-            if zoek.upper() in str(row).upper() or zoek is 'None':
-                des.append(row)
+            if zoek.upper() in str(row).upper():
+                pos_start = str(row).upper().index(zoek.upper())
+                pos_end = pos_start + len(zoek)
 
+                woord = str(row)[pos_start:pos_end]
+                split_row = str(row).upper().split(zoek.upper())
+                regel = []
+                for i in range(len(split_row)):
+                    regel.append(split_row[i])
+                    if i != len(split_row)-1:
+                        regel.append(woord)
+                des.append(regel)
+
+
+
+
+            elif zoek == 'None':
+                des.append(row)
 
     cursor.close()
     conn.close()

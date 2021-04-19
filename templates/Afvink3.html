@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-     <meta charset="UTF-8" name="Jasper Versantvoort" content="Afvink 3">
+    <meta charset="UTF-8" name="Jasper Versantvoort" content="Afvink 1">
     <title>Zoek genes</title>
     <!--<link rel="stylesheet" , href="/static/..."-->
 </head>
@@ -22,12 +22,27 @@
 
     </p>
 
-<p> Discriptions: </p>
+    <p> Discriptions: </p>
 
-{% for regel in database %}
-    <p> {{ regel }} <p>
+    {% for regel in database %}
+        {% if(zoek == 'None') %}
+            <p> {{ regel }} <p>
+            {% else %}
+            <p>
+            {% for woord in regel %}
+                {% if(woord == zoek) %}
+                <b>{{ woord }}</b>
+                {% else %}
+                {{ woord }}
+                {% endif %}
+            {% endfor %} </p>
+        {% endif %}
 
-{% endfor %}
+
+
+
+
+    {% endfor %}
 
 </form>
 </body>
